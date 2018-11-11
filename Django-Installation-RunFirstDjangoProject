@@ -61,6 +61,14 @@ C:\Users\CHOTKA>
 --------------------------------------------------------------------------------------------------------------
 How to create FirstDjangoApp
 -->django-admin startproject  projectname
+# Project Directory
+FirstDjangoApp
+  |---->FirstDjangoApp
+  |         |------->__init__.py
+  |         |------->settings.py
+  |         |------->urls.py
+  |         |------->wsgi.py
+  |---->manage.py
 
 after that u can run created prohect like that below command
 
@@ -83,6 +91,12 @@ Quit the server with CTRL-BREAK.
 [11/Nov/2018 21:55:41] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
 Not Found: /favicon.ico
 [11/Nov/2018 21:55:42] "GET /favicon.ico HTTP/1.1" 404 1982
+
+after that type this url in browser's address bar    http://127.0.0.1:8000/
+if The install worked successfully! Congratulations! will comes tis means every thing right
+
+--------------------------------------------------------------------------------------------------------
+
 
 
 
