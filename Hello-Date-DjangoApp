@@ -1,0 +1,83 @@
+                        View is responsable for business logic
+                        view wil take httpRequest and will give HttpResponse
+                                                 |------------------ |
+                    >-------------HttpRequest--- |     VIEW          |-------------HttpResponse----->
+                                                 |-------------------|
+    There r two  types of View
+    1> Function Based View
+    2> Class  Based View
+    
+ Note->Basic Step to Django Application
+ 1 > start project    (first django app)
+ 2>  start application  (testapp)
+ 3>  add this application to the project in  settings.py file  (line no 33  INSTALLED_APPS)
+ 4>  define view function inside views.py
+ 5>  define url pattern for our view function inside urls.py
+ 6>   run server
+ 7>   send request   (localhost:8000/hello)
+ 
+           req
+ END USER-------->SERVER------------------------------->URLS.PY----------------->VIEW FUNCTION
+ note:response given by view to end user
+ 
+ ---------------------------------------------------------------------------------------------------------------------------
+ views.py
+ --------
+ from django.shortcuts import render
+from django.http import HttpResponse
+import datetime
+# Create your views here.
+def hello_world_view(request):
+    return HttpResponse('<h1>Hello world in  Django Application</h1>')
+
+def date_time_view(request):
+    date=datetime.datetime.now()
+    s='<h2> The current Date and Time at server is :'+str(date)+'</h2>'
+    return HttpResponse(s)
+    
+    -------------------------------------------------------------------------------------------
+    urls.py
+    -------
+ """FirstDjangoApp URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.11/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.conf.urls import url, include
+    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+"""
+from django.conf.urls import url
+from django.contrib import admin
+from testapp import views
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^hello/', views.hello_world_view),
+    url(r'^date/', views.date_time_view),
+]
+---------------------------------------------------------------------------------
+settings.py
+----------
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.cont33enttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'testapp'
+]
+
+
+ 
+ 
+ 
+ 
+ 
