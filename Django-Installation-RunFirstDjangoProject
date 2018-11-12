@@ -92,11 +92,49 @@ Quit the server with CTRL-BREAK.
 Not Found: /favicon.ico
 [11/Nov/2018 21:55:42] "GET /favicon.ico HTTP/1.1" 404 1982
 
-after that type this url in browser's address bar    http://127.0.0.1:8000/
+after that type this url in browser's address bar    http://127.0.0.1:8000/  or localhost:8000
 if The install worked successfully! Congratulations! will comes tis means every thing right
+Note-if u want to change port no simply follow below command
+ -----> python manage.py runserver 9999
+ 
+ N0te- after running django app  by default it will provide one db by python name is  db.sqlite3
+ FirstDjangoApp
+  |---->FirstDjangoApp
+  |         |------->__init__.py
+  |         |------->settings.py
+  |         |------->urls.py
+  |         |------->wsgi.py
+  |---->db.sqlite3
+  |---->manage.py
+  
 
 --------------------------------------------------------------------------------------------------------
+How to stop the running server-->  ctrl+c
+-----------------------------------------------------------------------------------------
+just run below command
+--/DjangoApp/FirstDjangoApp>python manage.py startapp testapp
 
-
+ FirstDjangoApp
+  |---->FirstDjangoApp
+  |         |------->__init__.py
+  |         |------->settings.py  (here this is important)
+  |         |------->urls.py      (here this is important)
+  |         |------->wsgi.py
+  |---->testapp
+           |------>migrations
+                      |------->__init__.py
+           |------>__init__.py
+           |------>admin.py
+           |------>apps.py
+           |------>models.py
+           |------>tests.py
+           |------>views.py   (here this is important)
+  |---->db.sqlite3
+  |---->manage.py
+NOTE->this is the complete django application directory which should create using below command 
+   --->django-admin startproject FirstDjangoAppp
+   --->python manage.py startapp testapp
+   --->python manage.py runserver
+ ----------------------------------------------------------------------------------------------------------------------  
 
 
