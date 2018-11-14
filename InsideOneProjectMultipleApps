@@ -1,0 +1,76 @@
+#  First of all create new project
+C:\Users\CHOTKA\Desktop\CorePython\DjangoApps>django-admin startproject OneProjectMultipleApp
+#  create multiple apps inside project
+C:\Users\CHOTKA\Desktop\CorePython\DjangoApps\OneProjectMultipleApp>python manage.py startapp grettingapp
+
+C:\Users\CHOTKA\Desktop\CorePython\DjangoApps\OneProjectMultipleApp>python manage.py startapp timeapp
+#  add these two application inside settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'grettingapp',
+    'timeapp'
+]
+#  
+views.py    of tiemapp
+----------------------
+from django.shortcuts import render
+from django.http import HttpResponse
+import datetime
+# Create your views here.
+def  current_date_time(request):
+    time=datetime.datetime.now()
+    #s=new datetime.now()
+    return HttpResponse('<h2>Current Date & Time :'+str(time)+'</h2>')
+--------------------------------------------------------------------
+views.py    of grettingapp
+------------------------------
+from django.shortcuts import render
+from django.http import  HttpResponse
+# Create your views here.
+def gretting_view(request):
+    return HttpResponse('<h1>Hello Good Morning.........!!!!!</h1>')
+    
+----------------------------------------------------------------
+url.py
+-------
+"""OneProjectMultipleApp URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/2.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+'''
+from grettingapp.views import gretting_view
+from timeapp.views import current_date_time
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('gretting/', gretting_view),
+    path('time/', current_date_time),
+]  '''
+# alternate
+from grettingapp import views as v1
+from timeapp import views  as v2
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('gretting/', v1.gretting_view),
+    path('time/', v2.current_date_time),
+]
+--------------------------------------------
+run the server
+
