@@ -74,3 +74,8 @@ urlpatterns = [
     
 ]
 --------------------------------------------------------------
+run the server and send the requeset like that
+
+localhost:testapp/night
+    localhost:testapp/eve
+        localhost:testapp/mor
