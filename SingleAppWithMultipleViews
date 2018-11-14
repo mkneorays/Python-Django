@@ -62,7 +62,10 @@ def good_night_view(request):
     return HttpResponse('<h2>Good Night Sweat Dreams.......!!!!</h2>')
   ----------------------------------------------------------------------------------------
   
-    
+    run server and send request ==  localhost:8000/night
+                                   localhost:8000/mor
+                                   localhost:8000/eve
+                                   localhost:8000/night
     
     
 
