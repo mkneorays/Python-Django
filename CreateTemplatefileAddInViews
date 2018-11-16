@@ -1,0 +1,15 @@
+In Project to use template file 
+-----------------------------------------------------
+1 > First of all create the project using below command
+C:\Users\CHOTKA\Desktop\CorePython\DjangoApps>django-admin startproject ViewTemplate1
+2 > Start Application
+C:\Users\CHOTKA\Desktop\CorePython\DjangoApps\ViewTemplate1>python manage.py startapp testapp
+3 >create one templates folder in our main project only  (be carefull for creating folder )
+     in the template folder create a seprate folder with our application name like testapp
+     inside folder create our html files nothig but templates
+4 > Add application to the project inside settings.py
+    Add template folder inside settings.py file
+    after that add template dir like TEMPLATE_DIR add inside  TEMPLATES code inside settings.py only like 'DIRS': [TEMPLATE_DIR],
+5 > defined view function inside views.py
+6 > define url pattern for view function inside urls.py
+7 > run server and send request
