@@ -1,0 +1,12 @@
+C:\Users\CHOTKA\Desktop\CorePython\DjangoApps\ViewTemplate1\ViewTemplate1>tree /f
+Folder PATH listing
+Volume serial number is C223-DE11
+C:.
+│   settings.py
+│   urls.py
+│   wsgi.py
+│   __init__.py
+│
+└───__pycache__
+        settings.cpython-37.pyc
+        __init__.cpython-37.pyc   
