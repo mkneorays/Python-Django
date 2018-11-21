@@ -1,3 +1,6 @@
+NOTE- without model class we cant comminate db in django so we no neeed to write single line sql query its advantage of django
+
+
 C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps>django-admin startproject ViewModelDBDjangoApp
 
 C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps\ViewModelDBDjangoApp>python manage.py startapp testapp
@@ -19,7 +22,7 @@ class Employeee(models.Model):
  ''' table name=testapp_employee
      field name=eno,ename,esal,MessageMiddleware
    what is  Model  ?
-   Model is a python class which is going to represent a db table
+   Model is a python class, it is the sub class of super models.Model class which is going to represent a db table
    table
   After Writing model class we need to follow two task
   1> makemigrations (convert python code into sql code )
@@ -130,8 +133,25 @@ from testapp.models import Employeee
 # Register your models here.
 admin.site.register(Employeee)
 -------------------------------------------------------------------------------
-start here
+  File "C:\Users\CHOTKA\AppData\Local\Programs\Python\Python37-32\lib\site-packages\django\contrib\admin\sites.py", line 102, in register
+    for model in model_or_iterable:
+TypeError: 'MediaDefiningClass' object is not iterable
+getting these error solve these below process
+we solve 
+admin.site.register(Employeee)
+#admin.site.register(EmployeeeAdmin)  LIKE WONT WORK
+use below code------>
+from django.contrib import admin
+from testapp.models import Employeee
+# Register your models here.
+# if u want to display wholt data in table formate
+# follow below INSTALLED_APPS
+class EmployeeeAdmin(admin.ModelAdmin):
+    list_display=['id','eno','ename','esal','eadd']
 
+admin.site.register(Employeee,EmployeeeAdmin)
+#admin.site.register(EmployeeeAdmin)  LIKE WONT WORK
+------------------------------------------------------------
 
 
   
