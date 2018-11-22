@@ -1,0 +1,105 @@
+
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps>django-admin startproject DjangoMVTStudentApp
+
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps>cd djangomvtstudentapp
+
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps\DjangoMVTStudentApp>python manage.py startapp testapp
+
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps\DjangoMVTStudentApp>python manage.py runserver
+Performing system checks...
+
+------------------------------------------------------------------------------------------------
+after open models.py which is present in testapp and add below code
+from django.db import models
+
+# Create your models here.
+class Student(models.Model):
+    no=models.IntegerField()
+    name=models.CharField(max_length=20)
+    address=models.CharField(max_length=20)
+    salary=models.FloatField()
+    
+    NOTE-after that run below command
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps\DjangoMVTStudentApp>
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps\DjangoMVTStudentApp>python manage.py makemigrations
+Migrations for 'testapp':
+  testapp\migrations\0001_initial.py
+    - Create model Student
+
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps\DjangoMVTStudentApp>python manage.py sqlmigrate testapp 0001
+BEGIN;
+--
+-- Create model Student
+--
+CREATE TABLE "testapp_student" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "no" integer NOT NULL, "name" varchar(20) NOT NULL, "address" varchar(20) NOT NULL, "salary" real NOT NULL);
+COMMIT;
+
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps\DjangoMVTStudentApp>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, testapp
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying testapp.0001_initial... OK
+
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps\DjangoMVTStudentApp>
+-----------------------------------------------------------------------------------
+   #  Generate SuperUserInterface using below command
+   
+   
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps\DjangoMVTStudentApp>python manage.py createsuperuser
+Username (leave blank to use 'chotka'): chotka
+Email address: chotka@gmail.com
+Password:
+Password (again):
+The password is too similar to the email address.
+This password is too short. It must contain at least 8 characters.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
+
+C:\Users\CHOTKA\Desktop\PYTHON\DjangoApps\DjangoMVTStudentApp>
+---------------------------------------------------------------------------------
+Note- after that u have to register your model in admin.py which is present in testapp application
+admin.py
+--------
+from django.contrib import admin
+from testapp.models import Student
+
+# Register your models here.
+admin.site.register(Student)
+===============================
+from django.contrib import admin
+from testapp.models import Student
+
+# if u want to display data in tabler form
+class StudentAdmin(admin.ModelAdmin):
+    list_display=['id','no','name','address','salary']
+# Register your models here.
+# if u want to perform admin interface related operations then u have to register below line
+admin.site.register(Student,StudentAdmin)
+
+
+-------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
