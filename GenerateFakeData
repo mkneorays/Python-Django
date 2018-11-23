@@ -1,0 +1,76 @@
+# first of we need to install fake modul using below command
+#    pip install fake
+'''
+C:\Users\CHOTKA>pip install faker
+Collecting faker
+  Downloading https://files.pythonhosted.org/packages/8e/fb/29b3dd4b0332db634ed38ceefdb4f93797837cbe67f57c2c04cc1e3d9b55
+  /Faker-1.0.0-py2.py3-none-any.whl (845kB)
+    100% |████████████████████████████████| 849kB 3.1MB/s
+Collecting python-dateutil>=2.4 (from faker)
+  Downloading https://files.pythonhosted.org/packages/74/68/d87d9b36af36f44254a8d512cbfc48369103a3b9e474be9bdfe536abfc45
+  /python_dateutil-2.7.5-py2.py3-none-any.whl (225kB)
+    100% |████████████████████████████████| 235kB 4.8MB/s
+Collecting six>=1.10 (from faker)
+  Downloading https://files.pythonhosted.org/packages/67/4b/141a581104b1f6397bfa78ac9d43d8ad29a7ca43ea90a2d863fe3056e86a
+  /six-1.11.0-py2.py3-none-any.whl
+Collecting text-unidecode==1.2 (from faker)
+  Downloading https://files.pythonhosted.org/packages/79/42/d717cc2b4520fb09e45b344b1b0b4e81aa672001dd128c180fabc655c341
+  /text_unidecode-1.2-py2.py3-none-any.whl (77kB)
+    100% |████████████████████████████████| 81kB 2.6MB/s
+Installing collected packages: six, python-dateutil, text-unidecode, faker
+  The script faker.exe is installed in 'c:\users\chotka\appdata\local\programs\python\python37-32\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed faker-1.0.0 python-dateutil-2.7.5 six-1.11.0 text-unidecode-1.2
+You are using pip version 10.0.1, however version 18.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\CHOTKA>
+'''
+
+# and then run -->python product.py  (hit enter)
+from faker import Faker
+fake=Faker()
+print('Employee NAme :',fake.name())
+print('Employee NAme :',fake.first_name())
+print('Employee NAme :',fake.last_name())
+print('Employee dob :',fake.date())
+print('Employee Id :',fake.random_number(5)) # max 5 digit will come
+print('Employee email :',fake.email())
+print('Employee Alternative No :',fake.random_int(min=0,max=9999))
+print('Employee Role :',fake.random_element(elements=('SW','PM','TL','PL')))
+------------------------------------------------------------------------------------------
+# ifu want to run 100 times follow below code
+from faker import Faker
+fake=Faker()
+for i in range(100):
+    print('Employee NAme :',fake.name())
+    print('Employee NAme :',fake.first_name())
+    print('Employee NAme :',fake.last_name())
+    print('Employee dob :',fake.date())
+    print('Employee Id :',fake.random_number(5)) # max 5 digit will come
+    print('Employee email :',fake.email())
+    print('Employee Alternative No :',fake.random_int(min=0,max=9999))
+    print('Employee Role :',fake.random_element(elements=('SW','PM','TL','PL')))
+
+---------------------------------------------------------------------------------------------------
+# if u want to store data in db then follow below code
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE','DjangoMVTStudentApp.settings')
+import django
+django.setup()
+
+from testapp.models import *
+from faker import Faker
+from random import *
+faker=Faker()
+def fakedata(n):
+    for i in range(n):
+        fno=randint(1001,9999)
+        fname=faker.name()
+        fsalary=randint(10000,30000)
+        faddress=faker.city()
+        emp_record=Student.objects.get_or_create(no=fno,name=fname,address=faddress,salary=fsalary)
+# pass no how many records you want
+fakedata(40)
+
+NOTE- run this command --->python filename.py  (hit enter)
