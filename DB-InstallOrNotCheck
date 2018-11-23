@@ -1,0 +1,11 @@
+# after added third party db properties in settings.py at project level in DajangoApp if u want to check my db is poper insall or not folow below commmand
+open commad prompt
+-------->python manage.py shell
+
+
+>>>from django.db import connection
+>>>c=connection.cursor()
+>>>exit()
+
+
+NOte-if no error is comming its means db proper install
