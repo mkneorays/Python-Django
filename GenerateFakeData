@@ -31,6 +31,7 @@ C:\Users\CHOTKA>
 from faker import Faker
 fake=Faker()
 print('Employee NAme :',fake.name())
+print('Employee NAme :',fake.phone_number())
 print('Employee NAme :',fake.first_name())
 print('Employee NAme :',fake.last_name())
 print('Employee dob :',fake.date())
@@ -38,6 +39,18 @@ print('Employee Id :',fake.random_number(5)) # max 5 digit will come
 print('Employee email :',fake.email())
 print('Employee Alternative No :',fake.random_int(min=0,max=9999))
 print('Employee Role :',fake.random_element(elements=('SW','PM','TL','PL')))
+# custom phone number
+form faker import Faker
+from random import *
+def phonenumber():
+    d1=randint(6,9)
+    num=str(d1)
+    for i in range(9):
+        num=num+str(randint(0,9))
+    return int(num)
+print(phonenumber())  # only 10 digit will come not +91
+print(phonenumber())
+print(phonenumber())
 ------------------------------------------------------------------------------------------
 # ifu want to run 100 times follow below code
 from faker import Faker
