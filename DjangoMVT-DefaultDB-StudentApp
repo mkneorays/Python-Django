@@ -90,11 +90,36 @@ class StudentAdmin(admin.ModelAdmin):
 # Register your models here.
 # if u want to perform admin interface related operations then u have to register below line
 admin.site.register(Student,StudentAdmin)
+---------------------------------------------------------------------------------------------
+#  you have t register models in models.py at  application level
+models.py
+--------
+from django.contrib import admin
+from testapp.models import Student
 
+# if u want to display data in tabler form
+class StudentAdmin(admin.ModelAdmin):
+    list_display=['id','no','name','address','salary']
+# Register your models here.
+# if u want to perform admin interface related operations then u have to register below line
+admin.site.register(Student,StudentAdmin)
+-------------------------------------------------------------------------------------------
+#  you have t add in views.py at  application level
+views.py
+---------
+from django.shortcuts import render
+from testapp.models import Student
+
+# Create your views here.
+def student_details_view(request):
+    student=Student.objects.all()
+    return render(request,'html/student.html',{'student':student})
 
 -------------------------------------------------------------------------------------------
 
-# if u want to store data in db then follow below code
+# if u want to store fake data in db then follow below code create a file at projct level his name is fakedata.py
+fakedata.py
+-----------
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','DjangoMVTStudentApp.settings')
 import django
