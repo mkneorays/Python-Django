@@ -94,8 +94,29 @@ admin.site.register(Student,StudentAdmin)
 
 -------------------------------------------------------------------------------------------
 
+# if u want to store data in db then follow below code
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE','DjangoMVTStudentApp.settings')
+import django
+django.setup()
 
+from testapp.models import *
+from faker import Faker
+from random import *
+faker=Faker()
+def fakedata(n):
+    for i in range(n):
+        fno=randint(1001,9999)
+        fname=faker.name()
+        fsalary=randint(10000,30000)
+        faddress=faker.city()
+        emp_record=Student.objects.get_or_create(no=fno,name=fname,address=faddress,salary=fsalary)
+# pass no how many records you want
+fakedata(40)
 
+NOTE- run this command --->python filename.py  (hit enter)
+run server and req send
+-------------------------------------------------------------------
 
 
 
